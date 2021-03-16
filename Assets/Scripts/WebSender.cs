@@ -33,9 +33,7 @@ public class WebSender : MonoBehaviour
         Debug.Log("재시작 샌더");
         StartCoroutine(StartUploading());
     }
-    private void Update() {
-        Debug.Log("업데이트중");
-    }
+  
     public void DeletePicture()
     {
         path = "Assets/Resources/" + FileCounter + ".png";
@@ -59,9 +57,9 @@ public class WebSender : MonoBehaviour
         form.AddBinaryData("myimage", textureBytes, "imageFromUnity.png","image/png");
         
         UnityWebRequest www = UnityWebRequest.Post(url, form);
-        Debug.Log("보내기전");
+       
         yield return www.SendWebRequest();
-        Debug.Log("보내고 나서");
+     
         if(www.isNetworkError || www.isHttpError) {
             Debug.Log(www.error);
         }
